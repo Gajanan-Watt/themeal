@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #page_layout{
+            width: 100%;
+        }
+        #grid{
+            display: grid;
+            width: 100%;
+            grid-template-columns: repeat(4, 23%);
+            grid-template-rows: 400px;
+            gap: 20px;
+        }
+        #grid div img{
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div id = "page_layout">
+        <a href="cart.html"><h3>cart</h3></a>
+        <h2></h2>
+        <div>
+            <h1>Available dish</h1>
+            <div id = "grid">
+                <div>
+                    <img id = "one" src="" alt="">
+                    <h2 id = "hone"></h2>
+                    <p>30$</p>
+                    <button id = "onebut">Add to cart</button>
+                </div>
+                <div>
+                    <img id = "two" src="" alt="">
+                    <h2 id = "htwo"></h2>
+                    <p>20$</p>
+                    <button id = "twobut">Add to cart</button>
+                </div>
+                <div>
+                    <img id = "three" src="" alt="">
+                    <h2 id = "hthree"></h2>
+                    <p>18$</p>
+                    <button id = "threebut">Add to cart</button>
+                </div>
+                <div>
+                    <img id = "four" src="" alt="">
+                    <h2 id = "hfour"></h2>
+                    <p>22$</p>
+                    <button id = "fourbut">Add to cart</button>
+                </div>
+            </div>
+        </div>
+
+
+        
+
+        
+        
+        
+    </div>
+</body>
+</html>
+<script>
+
+        if(localStorage.getItem("meal") == null){
+            localStorage.setItem("meal", JSON.stringify([]));
+        }
+var meal = JSON.parse(localStorage.getItem("meal"))
+
+    async function res2(){
+        try{
+            // let res2 =await fetch("https://www.themealdb.com/api/json/v1/1/categories.php");
+            let one1 =await fetch("https://www.themealdb.com/api/json/v1/1/random.php");
+            var oned = await one1.json();
+            console.log(oned)
+            let one = document.getElementById("one");
+            one.src = oned.meals[0].strMealThumb
+            let hone = document.getElementById("hone");
+            hone.textContent = oned.meals[0].strMeal;
+            let onebut = document.getElementById("onebut");
+            onebut.onclick = () => {
+                meal.push(oned)
+                localStorage.setItem("meal", JSON.stringify(meal));
+            }
+
+            let two2 =await fetch("https://www.themealdb.com/api/json/v1/1/random.php");
+            var twod = await two2.json();
+            let two = document.getElementById("two");
+            two.src = twod.meals[0].strMealThumb
+            htwo.textContent = twod.meals[0].strMeal;
+            twobut.onclick = () => {
+                meal.push(twod)
+                localStorage.setItem("meal", JSON.stringify(meal));
+            }
+
+            let three3 =await fetch("https://www.themealdb.com/api/json/v1/1/random.php");
+            var threed = await three3.json();
+            let three = document.getElementById("three");
+            three.src = threed.meals[0].strMealThumb
+            hthree.textContent = threed.meals[0].strMeal;
+            threebut.onclick = () => {
+                meal.push(threed)
+                localStorage.setItem("meal", JSON.stringify(meal));
+            }
+
+            let four4 =await fetch("https://www.themealdb.com/api/json/v1/1/random.php");
+            var fourd = await four4.json();
+            let four = document.getElementById("four");
+            four.src = fourd.meals[0].strMealThumb
+            hfour.textContent = fourd.meals[0].strMeal;
+            fourbut.onclick = () => {
+                meal.push(fourd)
+                localStorage.setItem("meal", JSON.stringify(meal));
+            }
+        
+        }
+        catch(e){
+            console.log("e", e);
+        }
+    }
+    res2();
+</script>

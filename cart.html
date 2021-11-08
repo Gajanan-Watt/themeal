@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #page_layout{
+            width: 100%;
+        }
+        #grid{
+            display: grid;
+            width: 100%;
+            grid-template-columns: repeat(4, 23%);
+            grid-template-rows: 400px;
+            gap: 20px;
+        }
+        #grid div img{
+            width: 100%;
+        }
+        #sub{
+            width: 100px;
+            height: 52px;
+            border: none;
+            border: 1px solid black;
+        }
+    </style>
+   
+</head>
+<body>
+    <div id = "page_layout">
+        <h1>Your Orders</h1>
+        <div id = "grid">
+            <!-- <div> -->
+                <!-- <img id = "one" src="" alt="">
+                <h2 id = "hone"></h2> -->
+                <!-- <p>30$</p> -->
+                <!-- <button id = "onebut">Add to cart</button> -->
+            <!-- </div>
+            <div> -->
+                <!-- <img id = "two" src="" alt="">
+                <h2 id = "htwo"></h2> -->
+                <!-- <p>20$</p> -->
+                <!-- <button id = "twobut">Add to cart</button> -->
+            <!-- </div>
+            <div> -->
+                <!-- <img id = "three" src="" alt="">
+                <h2 id = "hthree"></h2> -->
+                <!-- <p>18$</p> -->
+                <!-- <button id = "threebut">Add to cart</button> -->
+            <!-- </div>
+            <div> -->
+                <!-- <img id = "four" src="" alt="">
+                <h2 id = "hfour"></h2> -->
+                <!-- <p>22$</p> -->
+                <!-- <button id = "fourbut">Add to cart</button> -->
+            <!-- </div> -->
+        </div>
+        <button id = "sub" >Submit</button>
+    </div>
+</body>
+</html>
+
+<script>
+    var grid= document.getElementById("grid");
+    let meal = JSON.parse(localStorage.getItem("meal"))
+    meal.forEach(el => {
+        let div = document.createElement('div');
+        let image = document.createElement('img');
+        let head = document.createElement('h1');
+        image.src = el.meals[0].strMealThumb;
+        head.textContent = el.meals[0].strMeal;
+        div.append(image, head);
+        grid.append(div);
+        console.log(el);
+    });
+    
+    // if(meal[0] != undefined){
+    //     let one = document.getElementById("one");
+    //     one.src = meal[0].meals[0].strMealThumb;
+    //     let hone = document.getElementById("hone");
+    //     hone.textContent = meal[0].meals[0].strMeal;
+    // }
+    // if(meal[1] != undefined){
+    //     let two = document.getElementById("two");
+    //     two.src = meal[1].meals[0].strMealThumb;
+    //     let htwo = document.getElementById("htwo");
+    //     htwo.textContent = meal[1].meals[0].strMeal;
+    // }
+    // if(meal[2] != undefined){
+    //     let three = document.getElementById("three");
+    //     three.src = meal[2].meals[0].strMealThumb;
+    //     let hthree = document.getElementById("hthree");
+    //     hthree.textContent = meal[2].meals[0].strMeal;
+    // }
+    // if(meal[3] != undefined){
+    //     let four = document.getElementById("four");
+    //     four.src = meal[3].meals[0].strMealThumb;
+    //     let hfour = document.getElementById("hfour");
+    //     hfour.textContent = meal[3].meals[0].strMeal;
+    // }
+
+    let sub = document.getElementById("sub");
+    sub.onclick = () => {
+        setTimeout((e) =>{
+            alert("Your order is accepted")
+        }, 0)
+        setTimeout((e) =>{
+            alert("Your order is being cooked")
+        }, 3000)
+        setTimeout((e) =>{
+            alert("Order out for delivery ")
+        }, 8000)
+        setTimeout((e) =>{
+            alert("Order delivered")
+        }, 12000)
+    }
+</script>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>home</title>
+    <style>
+        #page_layout{
+            width: 100%;
+        }
+        #nav{
+            width: 100%;
+            display: flex;
+            height: 150px;
+            border: 1px solid black;
+        }
+        #nav a {
+            margin-left: 200px;
+            text-decoration: none;
+            padding: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div id = "page_layout">
+        <div id = "nav">
+            <a href="menu.html">Menu</a>
+            <a href="login.html" id = "user">Login</a>
+            <a href="signup.html">Signup</a>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+
+
+      
+    let user = JSON.parse(localStorage.getItem("user"));
+    console.log(user)
+
+    let login_user = document.getElementById("user");
+    if(user == null){
+        login_user.textContent = "Log In"
+    } else {
+        login_user.textContent = user;
+    }
+    
+        
+ 
+</script>
